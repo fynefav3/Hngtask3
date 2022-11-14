@@ -1,52 +1,55 @@
-import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const Country = () => {
+  const navigation = useNavigation();
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        // justifyContent: 'flex-start',
-        paddingTop: 10,
-        paddingLeft: 10,
-        paddingRight: 10,
-      }}>
-      <Image
-        style={{width: 60, height: 60}}
-        source={{
-          uri: 'https://png.pngtree.com/png-vector/20220719/ourmid/pngtree-country-of-canada-png-image_6007120.png',
-        }}
-      />
+    <TouchableOpacity onPress={() => navigation.navigate('Details')}>
       <View
         style={{
           display: 'flex',
-          flexDirection: 'column',
-          flex: 1,
-          justifyContent: 'center',
+          flexDirection: 'row',
+          paddingTop: 10,
+          paddingLeft: 10,
+          paddingRight: 10,
         }}>
-        <Text
+        <Image
+          style={{width: 60, height: 60}}
+          source={{
+            uri: 'https://png.pngtree.com/png-vector/20220719/ourmid/pngtree-country-of-canada-png-image_6007120.png',
+          }}
+        />
+        <View
           style={{
-            marginRight: 4,
-            paddingLeft: 3,
-            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            flex: 1,
             justifyContent: 'center',
-            fontSize: 16,
           }}>
-          Country Name
-        </Text>
-        <Text
-          style={{
-            marginRight: 4,
-            paddingLeft: 3,
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 16,
-          }}>
-          Country
-        </Text>
+          <Text
+            style={{
+              marginRight: 4,
+              paddingLeft: 3,
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 16,
+            }}>
+            Country Name
+          </Text>
+          <Text
+            style={{
+              marginRight: 4,
+              paddingLeft: 3,
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 16,
+            }}>
+            Country
+          </Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
