@@ -26,7 +26,11 @@ npm install
 To install all dependencies
 
 
-
+Challenges faced
+- MTN is after my life.
+- I had the most miserable time doing this task.
+- I will be so devastated if i don't make it to the next round.
+- I hate network, built the appetise link for over an hour.
 
 App
 [View on Appetize](https://appetize.io/app/o5ogpnuk6tigkkbacbz6lu7zkq)
