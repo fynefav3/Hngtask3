@@ -29,4 +29,4 @@ To install all dependencies
 
 
 App
-View on Appetize
+[View on Appetize](https://appetize.io/app/o5ogpnuk6tigkkbacbz6lu7zkq)

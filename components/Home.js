@@ -12,31 +12,33 @@ import React, {useState, useEffect} from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import HomePage from './HomePage';
 import Country from './Country';
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import axios from 'axios';
+
+// const Section = ({children, title}): Node => {
+//   const isDarkMode = useColorScheme() === 'dark';
+//   return (
+//     <View style={styles.sectionContainer}>
+//       <Text
+//         style={[
+//           styles.sectionTitle,
+//           {
+//             color: isDarkMode ? Colors.white : Colors.black,
+//           },
+//         ]}>
+//         {title}
+//       </Text>
+//       <Text
+//         style={[
+//           styles.sectionDescription,
+//           {
+//             color: isDarkMode ? Colors.light : Colors.dark,
+//           },
+//         ]}>
+//         {children}
+//       </Text>
+//     </View>
+//   );
+// };
 
 const countriesURL = 'https://restcountries.com/v3.1/all';
 
@@ -46,7 +48,7 @@ const Home = () => {
 
 
   const fetchCountries = () => {
-    const countries = fetch(countriesURL);
+    const countries = axios.get(countriesURL);
     countries
       .then(async response => await setData(response.json()))
       .catch(error => console.log(error))
@@ -56,9 +58,6 @@ const Home = () => {
   useEffect(() => {
     fetchCountries();
   }, []);
-
-  
-
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {

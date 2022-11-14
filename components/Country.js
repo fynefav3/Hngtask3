@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const Country = ({data}) => {
   const navigation = useNavigation();
-  console.log(data["name"]);
+  console.log(data);
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Details')}>
 <View
