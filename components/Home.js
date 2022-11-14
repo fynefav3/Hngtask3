@@ -42,12 +42,13 @@ const countriesURL = 'https://restcountries.com/v3.1/all';
 
 const Home = () => {
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+
 
   const fetchCountries = () => {
     const countries = fetch(countriesURL);
     countries
-      .then(response => setData(response.json()))
+      .then(async response => await setData(response.json()))
       .catch(error => console.log(error))
       .finally(() => setLoading(false));
   };
@@ -56,6 +57,8 @@ const Home = () => {
     fetchCountries();
   }, []);
 
+  
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -63,17 +66,7 @@ const Home = () => {
   };
   return (
     <SafeAreaView style={{width: '100%'}}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <HomePage
-          data={data}
-          keyExtractor={({id}, index) => id}
-          renderItem={({item}) => {
-            return <Country />;
-          }}
-        />
-      )}
+      {isLoading ? <ActivityIndicator /> : <Country data={data} />}
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}

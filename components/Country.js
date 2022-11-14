@@ -2,11 +2,12 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const Country = () => {
+const Country = ({data}) => {
   const navigation = useNavigation();
+  console.log(data["name"]);
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Details')}>
-      <View
+<View
         style={{
           display: 'flex',
           flexDirection: 'row',
@@ -14,12 +15,12 @@ const Country = () => {
           paddingLeft: 10,
           paddingRight: 10,
         }}>
-        <Image
+        {/* <Image
           style={{width: 60, height: 60}}
           source={{
             uri: 'https://png.pngtree.com/png-vector/20220719/ourmid/pngtree-country-of-canada-png-image_6007120.png',
           }}
-        />
+        /> */}
         <View
           style={{
             display: 'flex',

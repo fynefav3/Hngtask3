@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Filter from './Filter';
 
 const HomePage = ({data}) => {
-  // console.log(data);
+  console.log(data);
 
   return (
     <View style={{display: 'flex', flexDirection: 'column'}}>
