@@ -4,10 +4,18 @@ import {useNavigation} from '@react-navigation/native';
 
 const Country = ({data}) => {
   const navigation = useNavigation();
-  console.log(data);
+
+  // console.log(data.name.common);
+
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details')}>
-<View
+    <TouchableOpacity
+      key={data.name.common}
+      onPress={() =>
+        navigation.navigate('Details', {
+          data: data,
+        })
+      }>
+      <View
         style={{
           display: 'flex',
           flexDirection: 'row',
@@ -15,12 +23,12 @@ const Country = ({data}) => {
           paddingLeft: 10,
           paddingRight: 10,
         }}>
-        {/* <Image
-          style={{width: 60, height: 60}}
+        <Image
+          style={{width: 60, height: 60, borderRadius: 10}}
           source={{
-            uri: 'https://png.pngtree.com/png-vector/20220719/ourmid/pngtree-country-of-canada-png-image_6007120.png',
+            uri: data.flags.png,
           }}
-        /> */}
+        />
         <View
           style={{
             display: 'flex',
@@ -36,7 +44,7 @@ const Country = ({data}) => {
               justifyContent: 'center',
               fontSize: 16,
             }}>
-            Country Name
+            {data.name.common}
           </Text>
           <Text
             style={{
@@ -46,7 +54,7 @@ const Country = ({data}) => {
               justifyContent: 'center',
               fontSize: 16,
             }}>
-            Country
+            {data.name.official}
           </Text>
         </View>
       </View>

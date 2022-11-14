@@ -10,9 +10,16 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Filter from './Filter';
+import Country from './Country';
 
 const HomePage = ({data}) => {
-  console.log(data);
+  const sk = [];
+
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+
+    sk.push(<Country data={element} />);
+  }
 
   return (
     <View style={{display: 'flex', flexDirection: 'column'}}>
@@ -30,7 +37,8 @@ const HomePage = ({data}) => {
       <View style={styles.home}>
         <Filter />
         <ScrollView>
-          <Text style={{padding: 10}}>A</Text>
+          {/* <Text style={{padding: 10}}>A</Text> */}
+          {sk}
         </ScrollView>
       </View>
     </View>

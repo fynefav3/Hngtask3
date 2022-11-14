@@ -11,6 +11,7 @@ const Filter = () => {
         paddingTop: 10,
         paddingLeft: 10,
         paddingRight: 10,
+        marginBottom: 30,
       }}>
       <View
         style={{

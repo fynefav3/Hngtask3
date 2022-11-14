@@ -1,17 +1,13 @@
-import type {Node} from 'react';
 import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
-  View,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import HomePage from './HomePage';
-import Country from './Country';
 import axios from 'axios';
 
 // const Section = ({children, title}): Node => {
@@ -46,26 +42,39 @@ const Home = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
+  const fetchCountries = async () => {
+    const response = await axios.get(countriesURL);
 
-  const fetchCountries = () => {
-    const countries = axios.get(countriesURL);
-    countries
-      .then(async response => await setData(response.json()))
-      .catch(error => console.log(error))
-      .finally(() => setLoading(false));
+    let d = response.data;
+    d.sort();
+
+    // d.sort(function (a, b) {
+    //   return a['name']['common'] - b['name']['common'];
+    // });
+
+    setData(d);
   };
-  //fetching Data
-  useEffect(() => {
-    fetchCountries();
+
+  React.useEffect(() => {
+    fetchCountries().then(e => {
+      // const gd = data.groupByToMap(d => {
+      //   return d.name.common.charAt(0);
+      // });
+
+      // console.log(gd[0]);
+      setLoading(false);
+    });
   }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
   return (
     <SafeAreaView style={{width: '100%'}}>
-      {isLoading ? <ActivityIndicator /> : <Country data={data} />}
+      {isLoading ? <ActivityIndicator /> : <HomePage key="home" data={data} />}
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
